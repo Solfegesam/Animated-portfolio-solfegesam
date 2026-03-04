@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel Billy Portfolio</title>
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #0a192f;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* NAVIGATION */
+    nav {
+      background-color: #333;
+      padding: 15px 20px;
+      text-align: center;
+    }
+
+    nav h1 {
+      color: white;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #0a192f;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      opacity: 0;             /* start hidden for animation */
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #about img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid #0a192f;
+      margin-bottom: 20px;
+      transition: transform 0.3s;
+    }
+
+    #about img:hover {
+      transform: scale(1.1);
+    }
+
+    /* SKILLS */
+    .skills-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .skills-box {
+      background-color: white;
+      padding: 20px;
+      max-width: 250px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      flex: 1 1 200px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .skills-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 8px 15px rgba(0,0,0,0.2);
+    }
+
+    /* CONTACT BUTTON */
+    a.button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #0a192f;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    a.button:hover {
+      background-color: #333;
+      transform: scale(1.05);
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: #0a192f;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+
+      .skills-container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #about img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <h1>Samuel Billy</h1>
+    <ul>
+      <li><a href="#about">About Me</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT ME -->
+  <section id="about">
+    <img src="https://avatars.githubusercontent.com/u/260166915?v=4" alt="Profile photo of Samuel Billy">
+    <h2>Hi, I'm Samuel Billy!</h2>
+    <p>Junior web developer based in Nairobi, Kenya.</p>
+    <p>I build responsive, modern websites using HTML, CSS, JavaScript, and React.</p>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills-container">
+      <div class="skills-box">
+        <h3>HTML</h3>
+        <p>Semantic structure and accessibility.</p>
+      </div>
+      <div class="skills-box">
+        <h3>CSS</h3>
+        <p>Styling, layouts, and responsive design.</p>
+      </div>
+      <div class="skills-box">
+        <h3>JavaScript</h3>
+        <p>Interactive web functionality and dynamic experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: <a href="mailto:samuelbarasa106@gmail.com">samuelbarasa106@gmail.com</a></p>
+    <a href="https://github.com/Solfegesam" target="_blank" class="button">Visit My GitHub Profile</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; 2026 Samuel Billy | Built with HTML & CSS. All rights reserved.
+  </footer>
+
+  <!-- SCRIPT FOR SCROLL ANIMATION -->
+  <script>
+    const sections = document.querySelectorAll('section');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+
+</body>
+</html>
